@@ -13,6 +13,19 @@
 <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script>
+window.addEventListener('error', function (e) {
+  var root = document.getElementById('root');
+  if (root && !root.hasChildNodes()) {
+    root.innerHTML =
+      '<pre style="white-space:pre-wrap;padding:20px;color:#900;background:#fff0f0;font-family:monospace;font-size:13px;line-height:1.5;">' +
+      'Something failed to load:\n\n' +
+      (e.message || 'Unknown error') +
+      (e.filename ? ('\n\nFile: ' + e.filename + ':' + e.lineno + ':' + e.colno) : '') +
+      '</pre>';
+  }
+});
+</script>
 <style>
 :root {
   --bg: #FAFAFC;
@@ -170,6 +183,20 @@ body {
 </head>
 <body>
 <div id="root"></div>
+<script>
+setTimeout(function () {
+  var root = document.getElementById('root');
+  if (root && !root.hasChildNodes()) {
+    root.innerHTML =
+      '<pre style="white-space:pre-wrap;padding:20px;color:#900;background:#fff0f0;font-family:monospace;font-size:13px;line-height:1.5;">' +
+      'Nothing rendered after 6 seconds.\n\n' +
+      'React loaded: ' + (typeof React !== 'undefined') + '\n' +
+      'ReactDOM loaded: ' + (typeof ReactDOM !== 'undefined') + '\n' +
+      'Babel loaded: ' + (typeof Babel !== 'undefined') +
+      '</pre>';
+  }
+}, 6000);
+</script>
 <script type="text/babel" data-presets="react">
 
 const { useState, useEffect, useCallback, useMemo, useRef } = React;
