@@ -349,7 +349,7 @@ function PulseLine({ pct }) {
 }
 
 function GoalRings({ rings }) {
-  const size = 128, center = size / 2, strokeW = 7, gap = 2;
+  const size = 140, center = size / 2, strokeW = 11, gap = 3;
   return (
     <div className="rings-row">
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="rings-svg">
@@ -537,16 +537,14 @@ function Dashboard({ data, latestWeight, onNavigate }) {
 
   const rings = [
     { label: "Steps", pct: stepGoal ? stepsToday / stepGoal : 0, color: "#00B4FF", detail: stepGoal ? `${stepsToday.toLocaleString()} / ${stepGoal.toLocaleString()}` : "Set a step goal" },
-    { label: "Training", pct: sessionGoal ? sessionDays / sessionGoal : 0, color: "#FF0090", detail: sessionGoal ? `${sessionDays} / ${sessionGoal} days this week` : "Set a weekly goal" },
     { label: "Fuel", pct: calorieGoal ? caloriesToday / calorieGoal : 0, color: "#9D00FF", detail: calorieGoal ? `${caloriesToday.toLocaleString()} / ${calorieGoal.toLocaleString()} kcal` : "Set a calorie goal" },
     { label: "Sleep", pct: sleepGoal ? sleepHours / sleepGoal : 0, color: "#6A5CFF", detail: sleepGoal ? `${sleepHours || 0}h / ${sleepGoal}h` : "Set a sleep goal" },
-    { label: "Weight", pct: weightProgressPct, color: "#FFB020", detail: hasWeightGoal ? `${Math.round(weightProgressPct * 100)}% to goal` : "Set start & target weight" },
   ];
 
   return (
     <div className="dashboard-grid">
       <div className="full-span">
-        <Section icon="🎯" title="Today's rings" sub="Steps · Training · Fuel · Sleep · Weight" accentVar="--goal">
+        <Section icon="🎯" title="Today's rings" sub="Steps · Fuel · Sleep" accentVar="--goal">
           <div className="rings-panel-row">
             <GoalRings rings={rings} />
             <WeekHeatmap days={last7DaysCompletion(data)} />
