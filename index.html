@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -54,7 +53,7 @@ body {
 .app-shell { min-height: 100vh; display: flex; position: relative; overflow-x: hidden; }
 .app-shell.loading { align-items: center; justify-content: center; }
 .loading-pulse { color: var(--muted); font-family: 'Space Mono', monospace; font-size: 13px; }
- 
+
 .ledger-rail {
   width: 14px; flex-shrink: 0; background: var(--surface); border-right: 1px solid var(--line);
   display: flex; flex-direction: column; justify-content: space-evenly; padding: 20px 0;
@@ -64,9 +63,9 @@ body {
 .ledger-tick.on { background: var(--accent); }
 @keyframes tickIn { to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .ledger-tick { animation: none; opacity: 1; } }
- 
+
 .app-main { flex: 1; min-width: 0; padding: 20px 18px 60px; max-width: 720px; margin: 0 auto; width: 100%; }
- 
+
 .hero { margin-bottom: 20px; position: relative; padding: 18px 20px 16px; border-radius: 16px; overflow: hidden; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 10px 30px -18px rgba(157,0,255,0.35); }
 .hero-mesh {
   position: absolute; inset: 0; z-index: 0; opacity: 0.16; pointer-events: none;
@@ -88,13 +87,13 @@ body {
 .hero h1 { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 23px; letter-spacing: -0.01em; margin: 2px 0 0; color: var(--text); }
 .hero-accent { font-weight: 600; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .pulse-svg { width: 100px; height: 30px; flex-shrink: 0; margin-top: 8px; position: relative; z-index: 1; }
- 
+
 .hero-stats { position: relative; z-index: 1; display: flex; gap: 24px; margin-top: 16px; flex-wrap: wrap; }
 .stat-block { display: flex; flex-direction: column; }
 .stat-value { font-family: 'Space Mono', monospace; font-size: 20px; font-weight: 600; color: var(--text); line-height: 1; }
 .stat-unit { font-size: 12px; color: var(--muted); margin-left: 2px; }
 .stat-label { font-size: 10.5px; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
- 
+
 .tabbar { display: flex; gap: 3px; margin-bottom: 18px; overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
 .tab {
   display: flex; align-items: center; gap: 6px; background: none; border: none; color: var(--muted);
@@ -105,12 +104,12 @@ body {
 .tab:hover { color: var(--text); }
 .tab.active { color: #fff; background: var(--grad); box-shadow: 0 2px 10px -4px rgba(157,0,255,0.55); }
 .tab:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--recover); outline-offset: 2px; }
- 
+
 .content { padding-bottom: 20px; }
 .dashboard-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
 @media (min-width: 620px) { .dashboard-grid { grid-template-columns: 1fr 1fr; } }
 .tab-body { display: flex; flex-direction: column; gap: 14px; }
- 
+
 .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px; position: relative; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 10px 24px -18px rgba(0,0,0,0.5); }
 .panel::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--panel-accent, var(--fuel)); }
 .panel-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
@@ -122,9 +121,9 @@ body {
 .panel-icon { width: 30px; height: 30px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 15px; }
 .panel h2 { font-family: 'Fredoka', sans-serif; font-size: 14.5px; font-weight: 600; letter-spacing: 0; margin: 0; color: var(--text); }
 .panel-sub { font-size: 11px; color: var(--muted); margin: 1px 0 0; }
- 
+
 .empty-hint { color: var(--muted); font-size: 13px; line-height: 1.5; margin: 4px 0 0; }
- 
+
 .field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 10px; font-size: 12px; color: var(--muted); }
 .field input, .field select {
   background: var(--bg); border: 1px solid var(--line); color: var(--text);
@@ -133,13 +132,23 @@ body {
 }
 .field input[type="range"] { padding: 0; accent-color: var(--effort); }
 .calc-field { color: var(--muted) !important; font-family: 'Space Mono', monospace; cursor: not-allowed; }
+.food-suggestions { display: flex; flex-direction: column; gap: 4px; margin: -4px 0 10px; }
+.food-suggestion {
+  display: flex; justify-content: space-between; align-items: center; gap: 10px;
+  background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
+  padding: 9px 12px; cursor: pointer; text-align: left; font-family: 'Poppins', sans-serif;
+  color: var(--text); width: 100%;
+}
+.food-suggestion:hover, .food-suggestion:focus-visible { border-color: var(--fuel); }
+.food-suggestion-name { font-size: 13px; }
+.food-suggestion-meta { font-size: 11px; color: var(--muted); font-family: 'Space Mono', monospace; white-space: nowrap; }
 .quad-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 10px; }
- 
+
 .exercise-rows { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
 .exercise-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: 6px; align-items: center; }
 .exercise-row input { background: var(--bg); border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: 7px 8px; font-size: 13px; font-family: 'Space Mono', monospace; min-width: 0; }
 .ex-name { font-family: 'Poppins', sans-serif !important; }
- 
+
 .row-actions { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
 .ghost-btn, .primary-btn, .icon-btn {
   display: inline-flex; align-items: center; gap: 6px;
@@ -152,31 +161,31 @@ body {
 .primary-btn:hover { filter: brightness(1.05); }
 .icon-btn { padding: 6px; border: none; color: var(--muted); border-radius: 999px; }
 .icon-btn:hover { color: var(--effort); background: var(--bg); }
- 
+
 .history-list { display: flex; flex-direction: column; gap: 2px; }
 .history-item { display: grid; grid-template-columns: 64px 1fr auto; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--line); }
 .history-item:last-child { border-bottom: none; }
 .history-date { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--muted); }
 .history-detail { font-size: 13px; overflow-wrap: break-word; word-break: break-word; min-width: 0; }
- 
+
 .fuel-summary { display: flex; gap: 24px; flex-wrap: wrap; }
 .focus-text { font-size: 14px; line-height: 1.5; margin: 0; }
- 
+
 .toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); background: var(--text); color: #0B0C16; padding: 9px 16px; border-radius: 999px; font-size: 13px; font-family: 'Poppins', sans-serif; z-index: 50; box-shadow: 0 8px 24px -10px rgba(0,0,0,0.6); }
- 
+
 .full-span { grid-column: 1 / -1; }
 .mini-list { margin: 0; padding-left: 18px; font-size: 13px; color: var(--text); display: flex; flex-direction: column; gap: 4px; }
 .mini-list li { padding-left: 2px; }
- 
+
 .rings-row { display: flex; flex-direction: column; align-items: center; gap: 8px; flex-shrink: 0; }
 .rings-svg { flex-shrink: 0; }
 .rings-legend { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
 .rings-legend-item { display: flex; align-items: center; gap: 6px; }
 .rings-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
 .rings-legend-label { font-size: 10.5px; font-weight: 500; color: var(--text); font-family: 'Poppins', sans-serif; white-space: nowrap; }
- 
+
 .rings-panel-row { display: flex; align-items: center; gap: 16px; flex-wrap: nowrap; }
- 
+
 .week-heatmap { display: flex; flex-direction: column; gap: 8px; flex: 1; min-width: 0; }
 .week-heatmap-title { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; font-family: 'Poppins', sans-serif; white-space: nowrap; }
 .week-heatmap-grid { display: flex; gap: 4px; width: 100%; }
@@ -189,19 +198,19 @@ body {
 .week-heatmap-cell.is-today { box-shadow: 0 0 0 2px rgba(255,255,255,0.6); }
 .week-heatmap-cell.is-future { opacity: 0.3; }
 .week-heatmap-label { font-size: 9px; color: var(--muted); font-family: 'Space Mono', monospace; }
- 
+
 .type-select { display: flex; gap: 4px; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 3px; margin-bottom: 12px; width: fit-content; }
 .type-btn { border: none; background: none; padding: 7px 14px; border-radius: 999px; cursor: pointer; font-family: 'Poppins', sans-serif; font-size: 12.5px; font-weight: 500; color: var(--muted); transition: background 0.15s ease, color 0.15s ease; }
 .type-btn.active { background: var(--grad); color: #fff; }
- 
+
 .macro-bars { display: flex; flex-direction: column; gap: 12px; }
 .macro-bar-head { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px; }
 .macro-bar-value { font-family: 'Space Mono', monospace; color: var(--muted); }
 .macro-bar-track { height: 7px; background: var(--bg); border-radius: 999px; overflow: hidden; }
 .macro-bar-fill { height: 100%; border-radius: 999px; transition: width 0.4s ease; }
- 
+
 .mini-chart-svg { width: 100%; height: auto; display: block; }
- 
+
 ::-webkit-scrollbar { height: 6px; width: 6px; }
 ::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
 </style>
@@ -223,9 +232,9 @@ setTimeout(function () {
 }, 6000);
 </script>
 <script type="text/babel" data-presets="react">
- 
+
 const { useState, useEffect, useCallback, useMemo, useRef } = React;
- 
+
 const storage = {
   async get(key) {
     const raw = window.localStorage.getItem(key);
@@ -237,7 +246,7 @@ const storage = {
     return { key, value };
   },
 };
- 
+
 const uid = () => Math.random().toString(36).slice(2, 10);
 const dateKey = (d) => {
   const y = d.getFullYear();
@@ -251,7 +260,7 @@ const fmtDate = (d) => {
   return dt.toLocaleDateString(undefined, { month: "short", day: "numeric" });
 };
 const daysBetween = (a, b) => Math.round((new Date(b) - new Date(a)) / 86400000);
- 
+
 const EMPTY = {
   goals: {
     targetWeight: "", targetDate: "", startWeight: "", focus: "",
@@ -260,7 +269,7 @@ const EMPTY = {
   },
   workouts: [], nutrition: [], sleep: [], weightLog: [],
 };
- 
+
 function computeStreak(workouts, sleep, nutrition) {
   const daysWithActivity = new Set([
     ...workouts.map((w) => w.date), ...sleep.map((s) => s.date), ...nutrition.map((n) => n.date),
@@ -273,9 +282,9 @@ function computeStreak(workouts, sleep, nutrition) {
   }
   return streak;
 }
- 
+
 const clampPct = (v) => (Number.isFinite(v) ? Math.max(0, Math.min(1, v)) : 0);
- 
+
 function weekSessionDayCount(workouts) {
   const days = new Set();
   const cursor = new Date();
@@ -286,12 +295,12 @@ function weekSessionDayCount(workouts) {
   }
   return days.size;
 }
- 
+
 function todaysSteps(workouts) {
   const t = todayStr();
   return workouts.filter((w) => w.date === t && w.type === "walking").reduce((s, w) => s + Number(w.steps || 0), 0);
 }
- 
+
 function last7DaysCompletion(data) {
   const days = [];
   const stepGoal = Number(data.goals.stepGoal || 0);
@@ -301,7 +310,7 @@ function last7DaysCompletion(data) {
   const sunday = new Date(today);
   sunday.setDate(today.getDate() - today.getDay());
   const WEEKDAY_LETTERS = ["S", "M", "T", "W", "T", "F", "S"];
- 
+
   for (let i = 0; i < 7; i++) {
     const dt = new Date(sunday);
     dt.setDate(sunday.getDate() + i);
@@ -321,7 +330,7 @@ function last7DaysCompletion(data) {
   }
   return days;
 }
- 
+
 function LedgerRail({ activeDates, span = 21 }) {
   const days = useMemo(() => {
     const arr = [];
@@ -333,7 +342,7 @@ function LedgerRail({ activeDates, span = 21 }) {
     }
     return arr;
   }, [span]);
- 
+
   return (
     <div className="ledger-rail" aria-hidden="true">
       {days.map((day, i) => {
@@ -347,7 +356,7 @@ function LedgerRail({ activeDates, span = 21 }) {
     </div>
   );
 }
- 
+
 function PulseLine({ pct }) {
   const amp = 4 + pct * 14;
   const path = `M0,20 L60,20 L70,${20 - amp} L80,${20 + amp} L90,${20 - amp * 0.6} L100,20 L160,20`;
@@ -357,7 +366,7 @@ function PulseLine({ pct }) {
     </svg>
   );
 }
- 
+
 function GoalRings({ rings }) {
   const size = 140, center = size / 2, strokeW = 11, gap = 3;
   return (
@@ -388,7 +397,7 @@ function GoalRings({ rings }) {
     </div>
   );
 }
- 
+
 function WeekHeatmap({ days }) {
   const today = todayStr();
   return (
@@ -408,7 +417,7 @@ function WeekHeatmap({ days }) {
     </div>
   );
 }
- 
+
 function MiniLineChart({ data, dataKey, color }) {
   if (data.length < 2) return null;
   const w = 600, h = 170, pad = 26;
@@ -427,7 +436,7 @@ function MiniLineChart({ data, dataKey, color }) {
     </svg>
   );
 }
- 
+
 function Section({ icon, title, sub, children, accentVar, onClick }) {
   return (
     <section
@@ -450,7 +459,7 @@ function Section({ icon, title, sub, children, accentVar, onClick }) {
     </section>
   );
 }
- 
+
 function StatBlock({ label, value, unit, accentVar }) {
   return (
     <div className="stat-block">
@@ -461,7 +470,7 @@ function StatBlock({ label, value, unit, accentVar }) {
     </div>
   );
 }
- 
+
 function MacroBar({ label, value, goal, unit = "", color }) {
   const pct = clampPct(goal ? value / goal : 0) * 100;
   return (
@@ -474,9 +483,9 @@ function MacroBar({ label, value, goal, unit = "", color }) {
     </div>
   );
 }
- 
+
 function EmptyHint({ text }) { return <p className="empty-hint">{text}</p>; }
- 
+
 const TABS = [
   { key: "dashboard", label: "Today", icon: "📈", accentVar: "--goal" },
   { key: "workout", label: "Train", icon: "🏋️", accentVar: "--effort" },
@@ -485,7 +494,7 @@ const TABS = [
   { key: "weight", label: "Weight", icon: "📈", accentVar: "--goal" },
   { key: "goals", label: "Goal", icon: "🎯", accentVar: "--goal" },
 ];
- 
+
 function Header({ streak, goals, latestWeight, todayCompletion }) {
   const toGoDays = goals.targetDate ? daysBetween(todayStr(), goals.targetDate) : null;
   const toGoWeight = latestWeight && goals.targetWeight ? (Number(latestWeight) - Number(goals.targetWeight)).toFixed(1) : null;
@@ -513,30 +522,30 @@ function Header({ streak, goals, latestWeight, todayCompletion }) {
     </header>
   );
 }
- 
+
 function Dashboard({ data, latestWeight, onNavigate }) {
   const chartData = useMemo(() => {
     const sorted = [...data.weightLog].sort((a, b) => (a.date < b.date ? -1 : 1));
     return sorted.map((w) => ({ date: fmtDate(w.date), weight: Number(w.weight) }));
   }, [data.weightLog]);
- 
+
   const t = todayStr();
   const todaysWorkout = data.workouts.filter((w) => w.date === t);
   const todaysNutrition = data.nutrition.filter((n) => n.date === t);
   const todaysSleep = data.sleep.find((s) => s.date === t);
- 
+
   const strengthCount = todaysWorkout.filter((w) => (w.type || "strength") === "strength").length;
   const conditioningCount = todaysWorkout.filter((w) => w.type === "conditioning").length;
   const stepsToday = todaysSteps(data.workouts);
   const caloriesToday = todaysNutrition.reduce((s, n) => s + Number(n.calories || 0), 0);
   const sessionDays = weekSessionDayCount(data.workouts);
- 
+
   const stepGoal = Number(data.goals.stepGoal || 0);
   const sessionGoal = Number(data.goals.weeklySessionGoal || 0);
   const calorieGoal = Number(data.goals.calorieGoal || 0);
   const sleepGoal = Number(data.goals.sleepGoal || 0);
   const sleepHours = todaysSleep ? Number(todaysSleep.hours || 0) : 0;
- 
+
   const startWeightNum = Number(data.goals.startWeight || 0);
   const targetWeightNum = Number(data.goals.targetWeight || 0);
   const currentWeightNum = Number(latestWeight || 0);
@@ -544,13 +553,13 @@ function Dashboard({ data, latestWeight, onNavigate }) {
   const weightProgressPct = hasWeightGoal
     ? Math.abs(startWeightNum - currentWeightNum) / Math.abs(startWeightNum - targetWeightNum)
     : 0;
- 
+
   const rings = [
     { label: "Steps", pct: stepGoal ? stepsToday / stepGoal : 0, color: "#00B4FF", detail: stepGoal ? `${stepsToday.toLocaleString()} / ${stepGoal.toLocaleString()}` : "Set a step goal" },
     { label: "Fuel", pct: calorieGoal ? caloriesToday / calorieGoal : 0, color: "#9D00FF", detail: calorieGoal ? `${caloriesToday.toLocaleString()} / ${calorieGoal.toLocaleString()} kcal` : "Set a calorie goal" },
     { label: "Sleep", pct: sleepGoal ? sleepHours / sleepGoal : 0, color: "#6A5CFF", detail: sleepGoal ? `${sleepHours || 0}h / ${sleepGoal}h` : "Set a sleep goal" },
   ];
- 
+
   return (
     <div className="dashboard-grid">
       <div className="full-span">
@@ -561,11 +570,11 @@ function Dashboard({ data, latestWeight, onNavigate }) {
           </div>
         </Section>
       </div>
- 
+
       <Section icon="📈" title="Weight trend" sub={`${data.weightLog.length} entries logged`} accentVar="--goal" onClick={() => onNavigate("weight")}>
         {chartData.length > 1 ? <MiniLineChart data={chartData} dataKey="weight" color="#00B4FF" /> : <EmptyHint text="Log two or more weigh-ins to see your trend line here." />}
       </Section>
- 
+
       <Section icon="🏋️" title="Today's training" accentVar="--effort" onClick={() => onNavigate("workout")}>
         {todaysWorkout.length ? (
           <ul className="mini-list">
@@ -575,7 +584,7 @@ function Dashboard({ data, latestWeight, onNavigate }) {
           </ul>
         ) : <EmptyHint text="Nothing logged yet today. Head to Train to add a session." />}
       </Section>
- 
+
       <Section icon="🍽️" title="Today's fuel" accentVar="--fuel" onClick={() => onNavigate("nutrition")}>
         {todaysNutrition.length ? (
           <div className="fuel-summary">
@@ -586,31 +595,125 @@ function Dashboard({ data, latestWeight, onNavigate }) {
           </div>
         ) : <EmptyHint text="No meals logged today." />}
       </Section>
- 
+
       <Section icon="🌙" title="Last night" accentVar="--recover" onClick={() => onNavigate("sleep")}>
         {todaysSleep ? <StatBlock label="hours slept" value={todaysSleep.hours} unit="h" accentVar="--recover" /> : <EmptyHint text="No sleep logged for last night yet." />}
       </Section>
     </div>
   );
 }
- 
+
+const NAMED_WODS = [
+  { name: "Fran", format: "For time", desc: "21-15-9: Thrusters (95/65lb) · Pull-ups" },
+  { name: "Cindy", format: "AMRAP", desc: "20 min AMRAP: 5 Pull-ups · 10 Push-ups · 15 Air squats" },
+  { name: "Grace", format: "For time", desc: "30 Clean and jerks (135/95lb)" },
+  { name: "Helen", format: "For time", desc: "3 rounds: 400m run · 21 KB swings (53/35lb) · 12 Pull-ups" },
+  { name: "Diane", format: "For time", desc: "21-15-9: Deadlifts (225/155lb) · Handstand push-ups" },
+  { name: "Karen", format: "For time", desc: "150 Wall balls (20/14lb)" },
+  { name: "Isabel", format: "For time", desc: "30 Snatches (135/95lb)" },
+  { name: "Annie", format: "For time", desc: "50-40-30-20-10: Double-unders · Sit-ups" },
+  { name: "Angie", format: "For time", desc: "100 Pull-ups · 100 Push-ups · 100 Sit-ups · 100 Squats, in order" },
+  { name: "Jackie", format: "For time", desc: "1000m row · 50 Thrusters (45lb) · 30 Pull-ups" },
+  { name: "Kelly", format: "For time", desc: "5 rounds: 400m run · 30 Box jumps (24/20in) · 30 Wall balls (20/14lb)" },
+  { name: "Nancy", format: "For time", desc: "5 rounds: 400m run · 15 Overhead squats (95/65lb)" },
+  { name: "Nicole", format: "AMRAP", desc: "20 min AMRAP: 400m run · max rep pull-ups each round" },
+  { name: "Chelsea", format: "EMOM", desc: "Every minute for 30 min: 5 Pull-ups · 10 Push-ups · 15 Air squats" },
+  { name: "Elizabeth", format: "For time", desc: "21-15-9: Clean (135/95lb) · Ring dips" },
+  { name: "Mary", format: "AMRAP", desc: "20 min AMRAP: 5 Handstand push-ups · 10 Pistols · 15 Pull-ups" },
+  { name: "Eva", format: "For time", desc: "5 rounds: 800m run · 30 KB swings (70/53lb) · 30 Pull-ups" },
+  { name: "Amanda", format: "For time", desc: "9-7-5: Muscle-ups · Squat snatches (135/95lb)" },
+  { name: "Christine", format: "For time", desc: "3 rounds: 500m row · 12 Bodyweight deadlifts · 21 Box jumps (24/20in)" },
+  { name: "Linda", format: "For time", desc: "10-9-8-7-6-5-4-3-2-1: Deadlift (1.5x BW) · Bench (BW) · Clean (0.75x BW)" },
+  { name: "Candy", format: "For time", desc: "5 rounds: 20 Pull-ups · 40 Push-ups · 60 Air squats" },
+  { name: "Gwen", format: "Rounds + reps", desc: "15-12-9 Clean & jerk, unbroken each round, rest as needed between (touch-and-go)" },
+  { name: "DT", format: "For time", desc: "5 rounds: 12 Deadlifts · 9 Hang power cleans · 6 Push jerks (155/105lb)" },
+  { name: "JT", format: "For time", desc: "21-15-9: Handstand push-ups · Ring dips · Push-ups" },
+  { name: "Randy", format: "For time", desc: "75 Power snatches (75/55lb)" },
+  { name: "Murph", format: "For time", desc: "1 mile run · 100 Pull-ups · 200 Push-ups · 300 Squats · 1 mile run (partition as needed)" },
+  { name: "Barbara", format: "Rounds + reps", desc: "5 rounds (3 min rest between): 20 Pull-ups · 30 Push-ups · 40 Sit-ups · 50 Squats" },
+  { name: "Lynne", format: "Rounds + reps", desc: "5 rounds, max reps: Bodyweight bench press · Pull-ups" },
+  { name: "Michael", format: "For time", desc: "3 rounds: 800m run · 50 Back extensions · 50 Sit-ups" },
+  { name: "Nate", format: "AMRAP", desc: "20 min AMRAP: 2 Muscle-ups · 4 Handstand push-ups · 8 KB swings (70/53lb)" },
+  { name: "Josh", format: "For time", desc: "21 Overhead squats (95/65lb) · 42 Pull-ups · 15 OHS · 30 Pull-ups · 9 OHS · 18 Pull-ups" },
+  { name: "Badger", format: "For time", desc: "3 rounds: 30 Squat cleans (95/65lb) · 30 Pull-ups · 800m run" },
+  { name: "Danny", format: "AMRAP", desc: "20 min AMRAP: 30 Box jumps (24in) · 20 Push press (115lb) · 30 Pull-ups" },
+  { name: "Roy", format: "AMRAP", desc: "12 min AMRAP: 15 Deadlifts (225/155lb) · 20 Box jumps (24/20in) · 25 Pull-ups" },
+  { name: "Hansen", format: "For time", desc: "5 rounds: 30 KB swings (53/35lb) · 30 Burpees · 30 GHD sit-ups" },
+  { name: "Ryan", format: "For time", desc: "5 rounds: 7 Muscle-ups · 21 Burpees" },
+];
+
+const MOVES = [
+  "Pull-ups", "Push-ups", "Air squats", "Sit-ups", "Burpees",
+  "Box jumps (24/20in)", "Double-unders", "Ring dips", "Toes-to-bar", "Wall balls (20/14lb)",
+  "Thrusters (95/65lb)", "Deadlifts (155/105lb)", "Power cleans (135/95lb)", "Power snatches (95/65lb)",
+  "Front squats (115/80lb)", "Overhead squats (95/65lb)", "Push press (95/65lb)",
+  "KB swings (53/35lb)", "Sumo DL high-pulls (75/55lb)", "Lunges",
+];
+const CARDIO_MOVES = ["400m run", "200m run", "800m run", "500m row", "250m row", "1 min Assault bike"];
+
+function hashStr(s) {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (Math.imul(h, 31) + s.charCodeAt(i)) >>> 0;
+  return h;
+}
+function mulberry32(seed) {
+  return function () {
+    seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function pick(rng, arr) { return arr[Math.floor(rng() * arr.length)]; }
+function pickN(rng, arr, n) {
+  const pool = arr.slice();
+  const out = [];
+  for (let i = 0; i < n && pool.length; i++) {
+    const idx = Math.floor(rng() * pool.length);
+    out.push(pool.splice(idx, 1)[0]);
+  }
+  return out;
+}
+
+const WOD_TEMPLATES = [
+  (rng) => { const [a, b] = pickN(rng, MOVES, 2); return { name: "21-15-9 Couplet", format: "For time", desc: `21-15-9: ${a} · ${b}` }; },
+  (rng) => { const [a, b, c] = pickN(rng, MOVES, 3); const r = pick(rng, [[10, 15, 20], [12, 9, 6], [15, 12, 9]]); return { name: "Triplet", format: "For time", desc: `5 rounds: ${r[0]} ${a} · ${r[1]} ${b} · ${r[2]} ${c}` }; },
+  (rng) => { const [a, b] = pickN(rng, MOVES, 2); const t = pick(rng, [12, 15, 18, 20]); const r = pick(rng, [[10, 15], [8, 12], [12, 10]]); return { name: "AMRAP Couplet", format: "AMRAP", desc: `${t} min AMRAP: ${r[0]} ${a} · ${r[1]} ${b}` }; },
+  (rng) => { const [a, b] = pickN(rng, MOVES, 2); const t = pick(rng, [16, 20, 24, 30]); const r = pick(rng, [8, 10, 12]); return { name: "EMOM Ladder", format: "EMOM", desc: `Every minute for ${t} min, alternating: ${r} ${a} (odd) / ${r} ${b} (even)` }; },
+  (rng) => { const cardio = pick(rng, CARDIO_MOVES); const [a, b] = pickN(rng, MOVES, 2); const r = pick(rng, [[15, 12], [20, 15], [12, 9]]); return { name: "Cardio Bookend", format: "For time", desc: `${cardio} · ${r[0]} ${a} · ${r[1]} ${b} · ${cardio}` }; },
+  (rng) => { const a = pick(rng, MOVES); return { name: "Death By", format: "EMOM", desc: `Death by ${a}: 1 rep minute 1, 2 reps minute 2, +1 rep each minute until you can't keep up` }; },
+  (rng) => { const moves = pickN(rng, MOVES, 4); const r = pick(rng, [[20, 15, 10, 5], [30, 25, 20, 15]]); return { name: "Chipper", format: "For time", desc: `${r[0]} ${moves[0]} · ${r[1]} ${moves[1]} · ${r[2]} ${moves[2]} · ${r[3]} ${moves[3]}` }; },
+];
+
+function wodOfTheDay() {
+  const rng = mulberry32(hashStr(todayStr()));
+  if (rng() < 1 / 6) return pick(rng, NAMED_WODS);
+  return pick(rng, WOD_TEMPLATES)(rng);
+}
+
 const WORKOUT_TYPES = [
   { key: "strength", label: "Strength" },
   { key: "conditioning", label: "CrossFit" },
   { key: "walking", label: "Walking" },
 ];
- 
+
 function WorkoutTab({ workouts, onChange }) {
   const [type, setType] = useState("strength");
   const [date, setDate] = useState(todayStr());
   const [exercises, setExercises] = useState([{ id: uid(), name: "", sets: "", reps: "", weight: "" }]);
   const [wod, setWod] = useState({ name: "", format: "For time", score: "", notes: "" });
   const [walk, setWalk] = useState({ steps: "", distance: "", duration: "" });
- 
+  const suggestedWod = useMemo(() => wodOfTheDay(), []);
+
+  const useSuggestedWod = () => {
+    setType("conditioning");
+    setWod((f) => ({ ...f, name: suggestedWod.name, format: suggestedWod.format, notes: suggestedWod.desc }));
+  };
+
   const addRow = () => setExercises((e) => [...e, { id: uid(), name: "", sets: "", reps: "", weight: "" }]);
   const updateRow = (id, field, val) => setExercises((e) => e.map((r) => (r.id === id ? { ...r, [field]: val } : r)));
   const removeRow = (id) => setExercises((e) => e.filter((r) => r.id !== id));
- 
+
   const save = () => {
     if (type === "strength") {
       const cleaned = exercises.filter((r) => r.name.trim());
@@ -627,27 +730,34 @@ function WorkoutTab({ workouts, onChange }) {
       setWalk({ steps: "", distance: "", duration: "" });
     }
   };
- 
+
   const sorted = [...workouts].sort((a, b) => (a.date < b.date ? 1 : -1));
- 
+
   const describeEntry = (w) => {
     const wType = w.type || "strength";
     if (wType === "strength") return w.exercises.map((e) => `${e.name} ${e.sets ? e.sets + "×" + e.reps : ""}${e.weight ? " @ " + e.weight + "lb" : ""}`).join(" · ");
     if (wType === "conditioning") return `${w.name || "WOD"}${w.format ? " · " + w.format : ""}${w.score ? " · " + w.score : ""}`;
     return `${Number(w.steps || 0).toLocaleString()} steps${w.distance ? " · " + w.distance + " mi" : ""}${w.duration ? " · " + w.duration + " min" : ""}`;
   };
- 
+
   return (
     <div className="tab-body">
+      <Section icon="🔥" title="Today's suggested WOD" sub={suggestedWod.name} accentVar="--effort">
+        <p className="focus-text">{suggestedWod.format} — {suggestedWod.desc}</p>
+        <div className="row-actions">
+          <button className="ghost-btn" onClick={useSuggestedWod}>Use this WOD</button>
+        </div>
+      </Section>
+
       <Section icon="🏋️" title="Log a session" accentVar="--effort">
         <div className="type-select">
           {WORKOUT_TYPES.map((t) => (
             <button key={t.key} className={`type-btn ${type === t.key ? "active" : ""}`} onClick={() => setType(t.key)}>{t.label}</button>
           ))}
         </div>
- 
+
         <label className="field"><span>Date</span><input type="date" value={date} onChange={(e) => setDate(e.target.value)} /></label>
- 
+
         {type === "strength" && (
           <>
             <div className="exercise-rows">
@@ -664,7 +774,7 @@ function WorkoutTab({ workouts, onChange }) {
             <div className="row-actions"><button className="ghost-btn" onClick={addRow}>+ Add exercise</button></div>
           </>
         )}
- 
+
         {type === "conditioning" && (
           <>
             <label className="field"><span>Workout name</span><input placeholder="Fran, Murph, custom WOD…" value={wod.name} onChange={(e) => setWod((f) => ({ ...f, name: e.target.value }))} /></label>
@@ -678,7 +788,7 @@ function WorkoutTab({ workouts, onChange }) {
             <label className="field"><span>Notes</span><input placeholder="RX, scaled weight, how it felt…" value={wod.notes} onChange={(e) => setWod((f) => ({ ...f, notes: e.target.value }))} /></label>
           </>
         )}
- 
+
         {type === "walking" && (
           <div className="quad-grid">
             <label className="field"><span>Steps</span><input inputMode="numeric" placeholder="6000" value={walk.steps} onChange={(e) => setWalk((f) => ({ ...f, steps: e.target.value }))} /></label>
@@ -686,10 +796,10 @@ function WorkoutTab({ workouts, onChange }) {
             <label className="field"><span>Duration (min)</span><input inputMode="numeric" placeholder="30" value={walk.duration} onChange={(e) => setWalk((f) => ({ ...f, duration: e.target.value }))} /></label>
           </div>
         )}
- 
+
         <div className="row-actions"><button className="primary-btn" onClick={save}>✓ Save session</button></div>
       </Section>
- 
+
       <Section icon="🏋️" title="History" sub={`${workouts.length} sessions`} accentVar="--effort">
         {sorted.length ? (
           <div className="history-list">
@@ -706,18 +816,216 @@ function WorkoutTab({ workouts, onChange }) {
     </div>
   );
 }
- 
+
+const FOOD_DB = [
+  // Proteins
+  { name: "Chicken breast, cooked", serving: "100g", protein: 31, carbs: 0, fat: 3.6, aliases: ["chicken"] },
+  { name: "Chicken thigh, cooked", serving: "100g", protein: 26, carbs: 0, fat: 10.9 },
+  { name: "Rotisserie chicken", serving: "100g", protein: 27, carbs: 0, fat: 12 },
+  { name: "Ground beef 90/10, cooked", serving: "100g", protein: 26, carbs: 0, fat: 10, aliases: ["beef", "hamburger meat"] },
+  { name: "Ground turkey, cooked", serving: "100g", protein: 27, carbs: 0, fat: 8 },
+  { name: "Salmon, cooked", serving: "100g", protein: 25, carbs: 0, fat: 13 },
+  { name: "Tuna, canned in water", serving: "100g", protein: 26, carbs: 0, fat: 1 },
+  { name: "Sardines, canned", serving: "1 can", protein: 23, carbs: 0, fat: 11 },
+  { name: "Cod, cooked", serving: "100g", protein: 23, carbs: 0, fat: 0.9 },
+  { name: "Tilapia, cooked", serving: "100g", protein: 26, carbs: 0, fat: 2.7 },
+  { name: "Shrimp, cooked", serving: "100g", protein: 24, carbs: 0.2, fat: 0.3 },
+  { name: "Pork chop, cooked", serving: "100g", protein: 27, carbs: 0, fat: 14 },
+  { name: "Bacon", serving: "2 slices", protein: 6, carbs: 0.4, fat: 8 },
+  { name: "Turkey bacon", serving: "2 slices", protein: 4, carbs: 0.5, fat: 3 },
+  { name: "Ham, deli slices", serving: "3 slices", protein: 9, carbs: 1.5, fat: 2 },
+  { name: "Turkey, deli slices", serving: "3 slices", protein: 9, carbs: 1, fat: 1 },
+  { name: "Salami", serving: "1 oz", protein: 6, carbs: 0.5, fat: 9 },
+  { name: "Pepperoni", serving: "1 oz", protein: 6, carbs: 1, fat: 13 },
+  { name: "Hot dog", serving: "1", protein: 6, carbs: 2, fat: 15 },
+  { name: "Sausage link", serving: "2 links", protein: 8, carbs: 1, fat: 12 },
+  { name: "Lamb, cooked", serving: "100g", protein: 25, carbs: 0, fat: 21 },
+  { name: "Duck breast, cooked", serving: "100g", protein: 24, carbs: 0, fat: 11 },
+  { name: "Egg, whole", serving: "1 large", protein: 6, carbs: 0.6, fat: 5 },
+  { name: "Egg whites", serving: "1 cup", protein: 26, carbs: 2, fat: 0.5 },
+  { name: "Tofu, firm", serving: "100g", protein: 15, carbs: 2, fat: 8 },
+  { name: "Tempeh", serving: "100g", protein: 19, carbs: 9, fat: 11 },
+  { name: "Edamame", serving: "1 cup", protein: 17, carbs: 14, fat: 8 },
+  { name: "Black beans, cooked", serving: "1 cup", protein: 15, carbs: 41, fat: 0.9 },
+  { name: "Chickpeas, cooked", serving: "1 cup", protein: 15, carbs: 45, fat: 4.3 },
+  { name: "Lentils, cooked", serving: "1 cup", protein: 18, carbs: 40, fat: 0.8 },
+
+  // Dairy
+  { name: "Greek yogurt, plain nonfat", serving: "1 cup", protein: 23, carbs: 9, fat: 0.7, aliases: ["yogurt"] },
+  { name: "Cottage cheese, low-fat", serving: "1 cup", protein: 28, carbs: 8, fat: 2.3 },
+  { name: "Whey protein powder", serving: "1 scoop", protein: 24, carbs: 3, fat: 1.5, aliases: ["protein powder", "whey"] },
+  { name: "Milk, 2%", serving: "1 cup", protein: 8, carbs: 12, fat: 5 },
+  { name: "Milk, whole", serving: "1 cup", protein: 8, carbs: 12, fat: 8 },
+  { name: "Almond milk, unsweetened", serving: "1 cup", protein: 1, carbs: 1, fat: 2.5 },
+  { name: "Oat milk", serving: "1 cup", protein: 3, carbs: 16, fat: 5 },
+  { name: "Chocolate milk", serving: "1 cup", protein: 8, carbs: 26, fat: 8 },
+  { name: "Cheddar cheese", serving: "1 oz", protein: 7, carbs: 0.4, fat: 9 },
+  { name: "Mozzarella, part-skim", serving: "1 oz", protein: 7, carbs: 1, fat: 5 },
+  { name: "String cheese", serving: "1 stick", protein: 6, carbs: 1, fat: 6 },
+  { name: "Cream cheese", serving: "2 tbsp", protein: 2, carbs: 1.5, fat: 10 },
+  { name: "Sour cream", serving: "2 tbsp", protein: 1, carbs: 1, fat: 5 },
+  { name: "Parmesan, grated", serving: "2 tbsp", protein: 4, carbs: 0.2, fat: 3.6 },
+  { name: "Feta cheese", serving: "1 oz", protein: 4, carbs: 1.2, fat: 6 },
+  { name: "Yogurt tube (kids)", serving: "1 tube", protein: 1, carbs: 9, fat: 1, aliases: ["gogurt"] },
+
+  // Grains / carbs
+  { name: "White rice, cooked", serving: "1 cup", protein: 4.3, carbs: 45, fat: 0.4 },
+  { name: "Brown rice, cooked", serving: "1 cup", protein: 5, carbs: 45, fat: 1.8 },
+  { name: "Quinoa, cooked", serving: "1 cup", protein: 8, carbs: 39, fat: 3.6 },
+  { name: "Couscous, cooked", serving: "1 cup", protein: 6, carbs: 36, fat: 0.3 },
+  { name: "Barley, cooked", serving: "1 cup", protein: 3.5, carbs: 44, fat: 0.7 },
+  { name: "Oats, dry", serving: "1/2 cup", protein: 5, carbs: 27, fat: 3, aliases: ["oatmeal"] },
+  { name: "Sweet potato, baked", serving: "1 medium", protein: 2, carbs: 24, fat: 0.1 },
+  { name: "Potato, baked", serving: "1 medium", protein: 4, carbs: 37, fat: 0.2 },
+  { name: "Whole wheat bread", serving: "1 slice", protein: 4, carbs: 12, fat: 1 },
+  { name: "White bread", serving: "1 slice", protein: 2.7, carbs: 13, fat: 1 },
+  { name: "Bagel, plain", serving: "1 medium", protein: 10, carbs: 55, fat: 1.5 },
+  { name: "English muffin", serving: "1", protein: 5, carbs: 27, fat: 1 },
+  { name: "Pasta, cooked", serving: "1 cup", protein: 8, carbs: 43, fat: 1.3 },
+  { name: "Tortilla, flour", serving: "1 medium", protein: 4, carbs: 24, fat: 4 },
+  { name: "Cereal, Cheerios", serving: "1 cup", protein: 3, carbs: 20, fat: 2 },
+  { name: "Cereal, Frosted Flakes", serving: "1 cup", protein: 1, carbs: 27, fat: 0 },
+  { name: "Granola", serving: "1/2 cup", protein: 5, carbs: 32, fat: 8 },
+  { name: "Waffle, frozen", serving: "2 waffles", protein: 5, carbs: 30, fat: 6 },
+  { name: "Pancakes", serving: "2 medium", protein: 6, carbs: 28, fat: 6 },
+  { name: "Croissant", serving: "1", protein: 5, carbs: 26, fat: 12 },
+  { name: "Donut, glazed", serving: "1", protein: 3, carbs: 25, fat: 11 },
+  { name: "Bagel with cream cheese", serving: "1", protein: 12, carbs: 58, fat: 12 },
+
+  // Fruit
+  { name: "Banana", serving: "1 medium", protein: 1.3, carbs: 27, fat: 0.4 },
+  { name: "Apple", serving: "1 medium", protein: 0.5, carbs: 25, fat: 0.3 },
+  { name: "Orange", serving: "1 medium", protein: 1.2, carbs: 15, fat: 0.2 },
+  { name: "Clementine", serving: "1 fruit", protein: 0.6, carbs: 9, fat: 0.1, aliases: ["cuties", "mandarin", "mandarin orange", "halos"] },
+  { name: "Watermelon", serving: "1 cup", protein: 0.9, carbs: 12, fat: 0.2 },
+  { name: "Pineapple", serving: "1 cup", protein: 0.9, carbs: 22, fat: 0.2 },
+  { name: "Mango", serving: "1 cup", protein: 1.4, carbs: 25, fat: 0.6 },
+  { name: "Peach", serving: "1 medium", protein: 1.4, carbs: 15, fat: 0.4 },
+  { name: "Pear", serving: "1 medium", protein: 0.6, carbs: 27, fat: 0.2 },
+  { name: "Cherries", serving: "1 cup", protein: 1.6, carbs: 25, fat: 0.3 },
+  { name: "Kiwi", serving: "1 fruit", protein: 0.8, carbs: 10, fat: 0.4 },
+  { name: "Grapes", serving: "1 cup", protein: 1, carbs: 27, fat: 0.2 },
+  { name: "Blueberries", serving: "1 cup", protein: 1.1, carbs: 21, fat: 0.5 },
+  { name: "Strawberries", serving: "1 cup", protein: 1, carbs: 12, fat: 0.5 },
+  { name: "Raisins", serving: "1/4 cup", protein: 1, carbs: 32, fat: 0.2 },
+  { name: "Dates", serving: "3 dates", protein: 0.6, carbs: 27, fat: 0.1 },
+  { name: "Applesauce pouch", serving: "1 pouch", protein: 0, carbs: 17, fat: 0 },
+
+  // Vegetables
+  { name: "Broccoli, cooked", serving: "1 cup", protein: 3.7, carbs: 11, fat: 0.6 },
+  { name: "Spinach, raw", serving: "2 cups", protein: 1.7, carbs: 2.2, fat: 0.1 },
+  { name: "Kale, raw", serving: "2 cups", protein: 2.9, carbs: 8.8, fat: 0.5 },
+  { name: "Carrots, raw", serving: "1 cup", protein: 1.2, carbs: 12, fat: 0.3 },
+  { name: "Bell pepper", serving: "1 medium", protein: 1, carbs: 7, fat: 0.3 },
+  { name: "Cucumber", serving: "1 cup", protein: 0.7, carbs: 4, fat: 0.1 },
+  { name: "Tomato", serving: "1 medium", protein: 1.1, carbs: 5, fat: 0.2 },
+  { name: "Zucchini, cooked", serving: "1 cup", protein: 1.5, carbs: 7, fat: 0.5 },
+  { name: "Cauliflower, cooked", serving: "1 cup", protein: 2, carbs: 5, fat: 0.5 },
+  { name: "Green beans, cooked", serving: "1 cup", protein: 2, carbs: 10, fat: 0.3 },
+  { name: "Asparagus, cooked", serving: "1 cup", protein: 3, carbs: 5, fat: 0.4 },
+  { name: "Mushrooms, cooked", serving: "1 cup", protein: 3.4, carbs: 4, fat: 0.6 },
+  { name: "Corn", serving: "1 cup", protein: 5, carbs: 27, fat: 2 },
+  { name: "Mixed salad greens", serving: "2 cups", protein: 1, carbs: 4, fat: 0.2 },
+
+  // Fats / nuts
+  { name: "Avocado", serving: "1/2 medium", protein: 1, carbs: 6, fat: 11 },
+  { name: "Olive oil", serving: "1 tbsp", protein: 0, carbs: 0, fat: 14 },
+  { name: "Peanut butter", serving: "2 tbsp", protein: 7, carbs: 6, fat: 16, aliases: ["pb"] },
+  { name: "Almonds", serving: "1 oz (23)", protein: 6, carbs: 6, fat: 14 },
+  { name: "Walnuts", serving: "1 oz", protein: 4, carbs: 4, fat: 18 },
+  { name: "Cashews", serving: "1 oz", protein: 5, carbs: 9, fat: 12 },
+  { name: "Pistachios", serving: "1 oz", protein: 6, carbs: 8, fat: 13 },
+  { name: "Butter", serving: "1 tbsp", protein: 0.1, carbs: 0, fat: 11 },
+  { name: "Mayonnaise", serving: "1 tbsp", protein: 0.1, carbs: 0.1, fat: 10 },
+  { name: "Ranch dressing", serving: "2 tbsp", protein: 0.3, carbs: 2, fat: 14 },
+  { name: "Hummus", serving: "2 tbsp", protein: 2, carbs: 4, fat: 2.5 },
+  { name: "Chia seeds", serving: "1 tbsp", protein: 2, carbs: 4, fat: 3 },
+
+  // Snacks / fast food / kid favorites
+  { name: "Protein bar", serving: "1 bar", protein: 20, carbs: 22, fat: 8 },
+  { name: "Protein shake, premade", serving: "1 bottle", protein: 30, carbs: 5, fat: 3 },
+  { name: "PB&J sandwich", serving: "1 sandwich", protein: 13, carbs: 45, fat: 18, aliases: ["pbj", "peanut butter and jelly"] },
+  { name: "Pizza, cheese", serving: "1 slice", protein: 12, carbs: 33, fat: 10 },
+  { name: "Burger, fast food", serving: "1 sandwich", protein: 17, carbs: 33, fat: 14 },
+  { name: "Chicken nuggets", serving: "6 pieces", protein: 14, carbs: 15, fat: 12 },
+  { name: "Chicken tenders", serving: "3 pieces", protein: 20, carbs: 16, fat: 13 },
+  { name: "Fish sticks", serving: "4 sticks", protein: 10, carbs: 18, fat: 8 },
+  { name: "Mac and cheese", serving: "1 cup", protein: 11, carbs: 34, fat: 11, aliases: ["mac n cheese", "kraft mac and cheese"] },
+  { name: "Ramen noodles", serving: "1 pack", protein: 9, carbs: 53, fat: 17 },
+  { name: "Quesadilla, cheese", serving: "1", protein: 15, carbs: 30, fat: 16 },
+  { name: "Taco, beef", serving: "1", protein: 9, carbs: 13, fat: 8 },
+  { name: "Nachos w/ cheese", serving: "1 plate", protein: 10, carbs: 36, fat: 20 },
+  { name: "French fries", serving: "medium", protein: 4, carbs: 43, fat: 15 },
+  { name: "Potato chips", serving: "1 oz", protein: 2, carbs: 15, fat: 10 },
+  { name: "Tortilla chips", serving: "1 oz", protein: 2, carbs: 18, fat: 7 },
+  { name: "Popcorn, air-popped", serving: "3 cups", protein: 3, carbs: 19, fat: 1 },
+  { name: "Pretzels", serving: "1 oz", protein: 3, carbs: 23, fat: 1 },
+  { name: "Goldfish crackers", serving: "55 pieces", protein: 3, carbs: 20, fat: 5 },
+  { name: "Fruit snacks", serving: "1 pouch", protein: 0, carbs: 21, fat: 0 },
+  { name: "Caesar salad w/ dressing", serving: "1 bowl", protein: 8, carbs: 12, fat: 20 },
+  { name: "Burrito, chicken", serving: "1 burrito", protein: 30, carbs: 60, fat: 18 },
+  { name: "Sushi roll, salmon avocado", serving: "8 pieces", protein: 12, carbs: 40, fat: 8 },
+  { name: "Granola bar", serving: "1 bar", protein: 3, carbs: 20, fat: 5 },
+  { name: "Dark chocolate", serving: "1 oz", protein: 2, carbs: 13, fat: 12 },
+  { name: "Ice cream, vanilla", serving: "1/2 cup", protein: 2.3, carbs: 16, fat: 7 },
+
+  // Drinks
+  { name: "Orange juice", serving: "1 cup", protein: 1.7, carbs: 26, fat: 0.5, aliases: ["oj"] },
+  { name: "Apple juice", serving: "1 cup", protein: 0.2, carbs: 28, fat: 0.3 },
+  { name: "Soda, cola", serving: "12 oz", protein: 0, carbs: 39, fat: 0, aliases: ["coke", "pepsi", "cola"] },
+  { name: "Gatorade", serving: "20 oz", protein: 0, carbs: 34, fat: 0, aliases: ["sports drink"] },
+  { name: "Lemonade", serving: "1 cup", protein: 0.1, carbs: 26, fat: 0 },
+  { name: "Beer, regular", serving: "12 oz", protein: 1.6, carbs: 13, fat: 0 },
+  { name: "Wine, red", serving: "5 oz", protein: 0.1, carbs: 4, fat: 0 },
+  { name: "Latte, whole milk", serving: "12 oz", protein: 8, carbs: 12, fat: 8 },
+  { name: "Iced coffee, black", serving: "16 oz", protein: 0.3, carbs: 0, fat: 0 },
+];
+
 function NutritionTab({ entries, goals, onChange }) {
   const [form, setForm] = useState({ date: todayStr(), meal: "", protein: "", carbs: "", fat: "" });
+  const [servings, setServings] = useState("1");
+  const [selectedFood, setSelectedFood] = useState(null);
   const set = (k, v) => setForm((f) => ({ ...f, [k]: v }));
   const computedCalories = Math.round(Number(form.protein || 0) * 4 + Number(form.carbs || 0) * 4 + Number(form.fat || 0) * 9);
- 
+
+  const suggestions = useMemo(() => {
+    const q = form.meal.trim().toLowerCase();
+    if (!q || selectedFood) return [];
+    return FOOD_DB.filter((f) =>
+      f.name.toLowerCase().includes(q) || (f.aliases && f.aliases.some((a) => a.toLowerCase().includes(q)))
+    ).slice(0, 6);
+  }, [form.meal, selectedFood]);
+
+  const applyFood = (food, servingsCount) => {
+    const mult = Number(servingsCount) || 1;
+    setForm((f) => ({
+      ...f,
+      protein: String(Math.round(food.protein * mult * 10) / 10),
+      carbs: String(Math.round(food.carbs * mult * 10) / 10),
+      fat: String(Math.round(food.fat * mult * 10) / 10),
+    }));
+  };
+
+  const pickFood = (food) => {
+    setSelectedFood(food);
+    setServings("1");
+    setForm((f) => ({ ...f, meal: food.name }));
+    applyFood(food, 1);
+  };
+
+  const changeServings = (val) => {
+    setServings(val);
+    if (selectedFood) applyFood(selectedFood, val);
+  };
+
   const save = () => {
     if (!computedCalories && !form.meal) return;
     onChange([{ id: uid(), ...form, calories: computedCalories }, ...entries]);
     setForm({ date: todayStr(), meal: "", protein: "", carbs: "", fat: "" });
+    setServings("1");
+    setSelectedFood(null);
   };
- 
+
   const sorted = [...entries].sort((a, b) => (a.date < b.date ? 1 : -1));
   const t = todayStr();
   const todays = entries.filter((n) => n.date === t);
@@ -728,7 +1036,7 @@ function NutritionTab({ entries, goals, onChange }) {
     fat: todays.reduce((s, n) => s + Number(n.fat || 0), 0),
   };
   const hasTargets = goals && (goals.calorieGoal || goals.proteinGoal || goals.carbsGoal || goals.fatGoal);
- 
+
   return (
     <div className="tab-body">
       {hasTargets && (
@@ -741,10 +1049,36 @@ function NutritionTab({ entries, goals, onChange }) {
           </div>
         </Section>
       )}
- 
+
       <Section icon="🍽️" title="Log a meal" accentVar="--fuel">
         <label className="field"><span>Date</span><input type="date" value={form.date} onChange={(e) => set("date", e.target.value)} /></label>
-        <label className="field"><span>Meal / notes</span><input placeholder="Chicken & rice bowl" value={form.meal} onChange={(e) => set("meal", e.target.value)} /></label>
+        <label className="field">
+          <span>Food</span>
+          <input
+            placeholder="Search a food, e.g. chicken breast"
+            value={form.meal}
+            onChange={(e) => {
+              set("meal", e.target.value);
+              if (selectedFood) setSelectedFood(null);
+            }}
+          />
+        </label>
+        {suggestions.length > 0 && (
+          <div className="food-suggestions">
+            {suggestions.map((f) => (
+              <button type="button" key={f.name} className="food-suggestion" onClick={() => pickFood(f)}>
+                <span className="food-suggestion-name">{f.name}</span>
+                <span className="food-suggestion-meta">{f.serving} · {Math.round(f.protein * 4 + f.carbs * 4 + f.fat * 9)} kcal</span>
+              </button>
+            ))}
+          </div>
+        )}
+        {selectedFood && (
+          <label className="field">
+            <span>Servings ({selectedFood.serving} each)</span>
+            <input inputMode="decimal" value={servings} onChange={(e) => changeServings(e.target.value)} />
+          </label>
+        )}
         <div className="quad-grid">
           <label className="field"><span>Protein g</span><input inputMode="numeric" value={form.protein} onChange={(e) => set("protein", e.target.value)} /></label>
           <label className="field"><span>Carbs g</span><input inputMode="numeric" value={form.carbs} onChange={(e) => set("carbs", e.target.value)} /></label>
@@ -753,7 +1087,7 @@ function NutritionTab({ entries, goals, onChange }) {
         </div>
         <div className="row-actions"><button className="primary-btn" onClick={save}>✓ Save meal</button></div>
       </Section>
- 
+
       <Section icon="🍽️" title="History" sub={`${entries.length} meals logged`} accentVar="--fuel">
         {sorted.length ? (
           <div className="history-list">
@@ -770,7 +1104,7 @@ function NutritionTab({ entries, goals, onChange }) {
     </div>
   );
 }
- 
+
 function SleepTab({ entries, onChange }) {
   const [form, setForm] = useState({ date: todayStr(), hours: "", quality: "3" });
   const set = (k, v) => setForm((f) => ({ ...f, [k]: v }));
@@ -780,7 +1114,7 @@ function SleepTab({ entries, onChange }) {
     setForm({ date: todayStr(), hours: "", quality: "3" });
   };
   const sorted = [...entries].sort((a, b) => (a.date < b.date ? 1 : -1));
- 
+
   return (
     <div className="tab-body">
       <Section icon="🌙" title="Log last night" accentVar="--recover">
@@ -789,7 +1123,7 @@ function SleepTab({ entries, onChange }) {
         <label className="field"><span>Quality (1–5)</span><input type="range" min="1" max="5" value={form.quality} onChange={(e) => set("quality", e.target.value)} /></label>
         <div className="row-actions"><button className="primary-btn" onClick={save}>✓ Save night</button></div>
       </Section>
- 
+
       <Section icon="🌙" title="History" sub={`${entries.length} nights logged`} accentVar="--recover">
         {sorted.length ? (
           <div className="history-list">
@@ -806,7 +1140,7 @@ function SleepTab({ entries, onChange }) {
     </div>
   );
 }
- 
+
 function WeightTab({ entries, goals, onChange }) {
   const [form, setForm] = useState({ date: todayStr(), weight: "", bodyFat: "" });
   const save = () => {
@@ -815,16 +1149,16 @@ function WeightTab({ entries, goals, onChange }) {
     setForm({ date: todayStr(), weight: "", bodyFat: "" });
   };
   const sorted = [...entries].sort((a, b) => (a.date < b.date ? 1 : -1));
- 
+
   const bodyFatChartData = useMemo(() => {
     return [...entries]
       .filter((w) => w.bodyFat)
       .sort((a, b) => (a.date < b.date ? -1 : 1))
       .map((w) => ({ date: fmtDate(w.date), bodyFat: Number(w.bodyFat) }));
   }, [entries]);
- 
+
   const latestBodyFat = [...entries].filter((w) => w.bodyFat).sort((a, b) => (a.date < b.date ? 1 : -1))[0];
- 
+
   return (
     <div className="tab-body">
       <Section icon="📈" title="Log a weigh-in" accentVar="--goal">
@@ -833,13 +1167,13 @@ function WeightTab({ entries, goals, onChange }) {
         <label className="field"><span>Body fat % (optional)</span><input inputMode="decimal" placeholder="18" value={form.bodyFat} onChange={(e) => setForm((f) => ({ ...f, bodyFat: e.target.value }))} /></label>
         <div className="row-actions"><button className="primary-btn" onClick={save}>✓ Save weigh-in</button></div>
       </Section>
- 
+
       {bodyFatChartData.length > 1 && (
         <Section icon="📈" title="Body fat trend" sub={latestBodyFat ? `Latest: ${latestBodyFat.bodyFat}%` : undefined} accentVar="--fuel">
           <MiniLineChart data={bodyFatChartData} dataKey="bodyFat" color="#9D00FF" />
         </Section>
       )}
- 
+
       <Section icon="📈" title="History" sub={`${entries.length} entries`} accentVar="--goal">
         {sorted.length ? (
           <div className="history-list">
@@ -856,14 +1190,14 @@ function WeightTab({ entries, goals, onChange }) {
     </div>
   );
 }
- 
+
 function GoalsTab({ goals, onChange, onExport, onImport }) {
   const [form, setForm] = useState(goals);
   useEffect(() => setForm(goals), [goals]);
   const set = (k, v) => setForm((f) => ({ ...f, [k]: v }));
   const save = () => onChange(form);
   const fileInputRef = useRef(null);
- 
+
   return (
     <div className="tab-body">
       <Section icon="🎯" title="Your goal" sub="This drives the countdown on Today" accentVar="--goal">
@@ -873,7 +1207,7 @@ function GoalsTab({ goals, onChange, onExport, onImport }) {
         <label className="field"><span>Focus / notes</span><input placeholder="Strength + fat loss, 4 sessions a week" value={form.focus} onChange={(e) => set("focus", e.target.value)} /></label>
         <div className="row-actions"><button className="primary-btn" onClick={save}>✓ Save goal</button></div>
       </Section>
- 
+
       <Section icon="🎯" title="Daily targets" sub="Powers the rings on Today" accentVar="--recover">
         <div className="quad-grid">
           <label className="field"><span>Step goal</span><input inputMode="numeric" placeholder="8000" value={form.stepGoal} onChange={(e) => set("stepGoal", e.target.value)} /></label>
@@ -886,11 +1220,11 @@ function GoalsTab({ goals, onChange, onExport, onImport }) {
         </div>
         <div className="row-actions"><button className="primary-btn" onClick={save}>✓ Save targets</button></div>
       </Section>
- 
+
       {goals.focus && (
         <Section icon="🔥" title="Focus" accentVar="--effort"><p className="focus-text">{goals.focus}</p></Section>
       )}
- 
+
       <Section icon="⬇️" title="Backup & restore" sub="Your data lives only on this device — back it up" accentVar="--fuel">
         <p className="empty-hint" style={{ marginBottom: 12 }}>
           Export saves everything (workouts, meals, sleep, weight, goals) as a file you can keep safe or move to another device.
@@ -914,14 +1248,14 @@ function GoalsTab({ goals, onChange, onExport, onImport }) {
     </div>
   );
 }
- 
+
 function FitnessTracker() {
   const [data, setData] = useState(EMPTY);
   const [loaded, setLoaded] = useState(false);
   const [tab, setTab] = useState("dashboard");
   const [toast, setToast] = useState(null);
   const saveTimer = useRef(null);
- 
+
   useEffect(() => {
     (async () => {
       try {
@@ -934,7 +1268,7 @@ function FitnessTracker() {
       }
     })();
   }, []);
- 
+
   const persist = useCallback((next) => {
     setData(next);
     if (saveTimer.current) clearTimeout(saveTimer.current);
@@ -946,7 +1280,7 @@ function FitnessTracker() {
       }
     }, 250);
   }, []);
- 
+
   const exportData = useCallback(() => {
     try {
       const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
@@ -963,7 +1297,7 @@ function FitnessTracker() {
       setToast("Couldn't export — try again");
     }
   }, [data]);
- 
+
   const importData = useCallback(
     (file) => {
       const reader = new FileReader();
@@ -989,23 +1323,23 @@ function FitnessTracker() {
     },
     [persist]
   );
- 
+
   useEffect(() => {
     if (!toast) return;
     const t = setTimeout(() => setToast(null), 2400);
     return () => clearTimeout(t);
   }, [toast]);
- 
+
   const activeDates = useMemo(() => new Set([
     ...data.workouts.map((w) => w.date), ...data.sleep.map((s) => s.date),
     ...data.nutrition.map((n) => n.date), ...data.weightLog.map((w) => w.date),
   ]), [data]);
- 
+
   const streak = useMemo(() => computeStreak(data.workouts, data.sleep, data.nutrition), [data]);
   const latestWeight = data.weightLog.length
     ? [...data.weightLog].sort((a, b) => (a.date < b.date ? 1 : -1))[0].weight
     : data.goals.startWeight || null;
- 
+
   const todayCompletion = useMemo(() => {
     const t = todayStr();
     let n = 0;
@@ -1015,11 +1349,11 @@ function FitnessTracker() {
     if (data.weightLog.some((w) => w.date === t)) n++;
     return n / 4;
   }, [data]);
- 
+
   if (!loaded) {
     return <div className="app-shell loading"><div className="loading-pulse">Loading your log…</div></div>;
   }
- 
+
   return (
     <div className="app-shell">
       <LedgerRail activeDates={activeDates} />
@@ -1045,9 +1379,8 @@ function FitnessTracker() {
     </div>
   );
 }
- 
+
 ReactDOM.createRoot(document.getElementById("root")).render(<FitnessTracker />);
 </script>
 </body>
 </html>
- 
