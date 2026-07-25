@@ -537,7 +537,7 @@ function Dashboard({ data, latestWeight, onNavigate }) {
   const strengthCount = todaysWorkout.filter((w) => (w.type || "strength") === "strength").length;
   const conditioningCount = todaysWorkout.filter((w) => w.type === "conditioning").length;
   const stepsToday = todaysSteps(data.workouts);
-  const caloriesToday = todaysNutrition.reduce((s, n) => s + Number(n.calories || 0), 0);
+  const caloriesToday = Math.round(todaysNutrition.reduce((s, n) => s + Number(n.calories || 0), 0));
   const sessionDays = weekSessionDayCount(data.workouts);
 
   const stepGoal = Number(data.goals.stepGoal || 0);
@@ -588,10 +588,10 @@ function Dashboard({ data, latestWeight, onNavigate }) {
       <Section icon="🍽️" title="Today's fuel" accentVar="--fuel" onClick={() => onNavigate("nutrition")}>
         {todaysNutrition.length ? (
           <div className="fuel-summary">
-            <StatBlock label="calories" value={caloriesToday} accentVar="--fuel" />
-            <StatBlock label="protein" value={todaysNutrition.reduce((s, n) => s + Number(n.protein || 0), 0)} unit="g" />
-            <StatBlock label="carbs" value={todaysNutrition.reduce((s, n) => s + Number(n.carbs || 0), 0)} unit="g" />
-            <StatBlock label="fat" value={todaysNutrition.reduce((s, n) => s + Number(n.fat || 0), 0)} unit="g" />
+            <StatBlock label="calories" value={Math.round(caloriesToday)} accentVar="--fuel" />
+            <StatBlock label="protein" value={Math.round(todaysNutrition.reduce((s, n) => s + Number(n.protein || 0), 0))} unit="g" />
+            <StatBlock label="carbs" value={Math.round(todaysNutrition.reduce((s, n) => s + Number(n.carbs || 0), 0))} unit="g" />
+            <StatBlock label="fat" value={Math.round(todaysNutrition.reduce((s, n) => s + Number(n.fat || 0), 0))} unit="g" />
           </div>
         ) : <EmptyHint text="No meals logged today." />}
       </Section>
@@ -1030,10 +1030,10 @@ function NutritionTab({ entries, goals, onChange }) {
   const t = todayStr();
   const todays = entries.filter((n) => n.date === t);
   const totals = {
-    calories: todays.reduce((s, n) => s + Number(n.calories || 0), 0),
-    protein: todays.reduce((s, n) => s + Number(n.protein || 0), 0),
-    carbs: todays.reduce((s, n) => s + Number(n.carbs || 0), 0),
-    fat: todays.reduce((s, n) => s + Number(n.fat || 0), 0),
+    calories: Math.round(todays.reduce((s, n) => s + Number(n.calories || 0), 0)),
+    protein: Math.round(todays.reduce((s, n) => s + Number(n.protein || 0), 0)),
+    carbs: Math.round(todays.reduce((s, n) => s + Number(n.carbs || 0), 0)),
+    fat: Math.round(todays.reduce((s, n) => s + Number(n.fat || 0), 0)),
   };
   const hasTargets = goals && (goals.calorieGoal || goals.proteinGoal || goals.carbsGoal || goals.fatGoal);
 
